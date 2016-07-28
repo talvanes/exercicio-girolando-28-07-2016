@@ -12,6 +12,8 @@ class IndexController extends Controller
 {
     public function index()
     {
+        if(!Auth::guest())
+            return redirect()->route('produto.index');
         return view('content.sistema.index');
     }
 
