@@ -19,3 +19,14 @@ $factory->define(App\User::class, function (Faker\Generator $faker) {
         'remember_token' => str_random(10),
     ];
 });
+
+$factory->define(App\Entities\Product::class, function (Faker\Generator $faker) {
+    $special = rand(0,1);
+    return [
+        'productName' => $faker->word,
+        'productDescription' => $faker->text,
+        'productPrice' => $faker->randomFloat(2),
+        'productStock' => $faker->randomDigit,
+        'productSpecial' => $special
+    ];
+});

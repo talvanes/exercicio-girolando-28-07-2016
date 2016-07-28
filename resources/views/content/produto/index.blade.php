@@ -34,7 +34,7 @@
                     {!! csrf_field() !!}
                     <input type="hidden" name="_method" value="PUT">
                     <input type="hidden" name="chartQty" value="1">
-                    <button class="btn btn-sm btn-default col-md-6" name="adicionar[{!! $produto->id !!}">+Carrinho</button>
+                    <button class="btn btn-sm btn-default col-md-6" name="adicionar[{!! $produto->id !!}]">+Carrinho</button>
                 </form>
             </div>
         </div>
