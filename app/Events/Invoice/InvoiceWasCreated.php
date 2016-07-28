@@ -20,7 +20,7 @@ class InvoiceWasCreated extends Event
      */
     public function __construct(Invoice $invoice)
     {
-        //
+        $this->invoice = $invoice;
     }
 
     /**

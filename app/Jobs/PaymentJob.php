@@ -33,7 +33,8 @@ class PaymentJob extends Job implements ShouldQueue
     public function handle()
     {
         $invoice = $this->invoice;
-        Mail::send('mail.payment', ['invoice' => $this->invoice], function($message) use($invoice){
+        Mail::send('mails.payment', ['invoice' => $this->invoice], function($message) use($invoice){
+            $message->from('contato@dildostore.com', 'Contato Dildostore');
             $message->to($invoice->User->email, $invoice->User->name);
         });
     }

@@ -27,6 +27,7 @@ class InvoiceService
         try {
             DB::beginTransaction();
             $invoice = Invoice::create(['userId' => Auth::id(), 'invoiceDate' => date('Y-m-d'), 'invoicePrice' => $valor]);
+
             foreach ($itens as $item) {
                 InvoiceItem::create([
                     'invoiceId' => $invoice->id,
@@ -38,6 +39,7 @@ class InvoiceService
                 ]);
             }
             DB::commit();
+            return $invoice;
         } catch (\Exception $e) {
             DB::rollback();
             throw $e;

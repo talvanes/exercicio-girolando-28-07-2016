@@ -15,8 +15,8 @@ return [
     */
 
     'mailgun' => [
-        'domain' => env('MAILGUN_DOMAIN'),
-        'secret' => env('MAILGUN_SECRET'),
+        'domain' => 'girolando.com.br',
+        'secret' => 'key-0c96796a27bdaea08c025fadfb56cdc5',
     ],
 
     'ses' => [
