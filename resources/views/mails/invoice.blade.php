@@ -1,0 +1,1 @@
+Nova fatura foi gerada

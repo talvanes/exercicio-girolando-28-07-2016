@@ -13,6 +13,7 @@ use App\Entities\Chart;
 use App\Entities\Product;
 use App\Events\Invoice\InvoiceWasCreated;
 use App\Exceptions\CarrinhoException;
+use App\Exceptions\UserNotLoggedException;
 use App\Jobs\PaymentJob;
 use Illuminate\Contracts\Auth\Guard;
 use Illuminate\Contracts\Events\Dispatcher;
@@ -151,9 +152,10 @@ class CarrinhoService
 
     public function finish()
     {
+        if($this->guard->guest()) throw new UserNotLoggedException();
         $invoice = $this->invoiceService->create($this->getItems());
         $this->eventDispatcher->fire(new InvoiceWasCreated($invoice));
-        $this->dispatch(new PaymentJob());
+        $this->dispatch(new PaymentJob($invoice));
         $this->clear();
     }
 

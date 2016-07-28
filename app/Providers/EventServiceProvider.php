@@ -2,6 +2,8 @@
 
 namespace App\Providers;
 
+use App\Events\Invoice\InvoiceWasCreated;
+use App\Listeners\Invoices\SendInvoiceMail;
 use Illuminate\Contracts\Events\Dispatcher as DispatcherContract;
 use Illuminate\Foundation\Support\Providers\EventServiceProvider as ServiceProvider;
 
@@ -16,6 +18,9 @@ class EventServiceProvider extends ServiceProvider
         'App\Events\SomeEvent' => [
             'App\Listeners\EventListener',
         ],
+        InvoiceWasCreated::class => [
+            SendInvoiceMail::class
+        ]
     ];
 
     /**
