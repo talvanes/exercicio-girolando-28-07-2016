@@ -22,8 +22,12 @@
         <div class="col-md-4 text-center product-block">
             <div class="product-details">
                 <img class="product-image" src="{!! $produto->productPhoto !!}"><br>
+                @if($produto->productSpecial)
+                    (especial)
+                @endif
             </div>
             <h3>{!! $produto->productName !!}</h3>
+            <h4>{!! $produto->productPrice !!}</h4>
             <div class="btn-group product-buttons col-md-12">
                 <a class="btn btn-sm btn-primary col-md-4" href="{!! route('produto.show', $produto) !!}">Detalhes</a>
                 <form action="{!! route('carrinho.update', $produto) !!}" method="post">

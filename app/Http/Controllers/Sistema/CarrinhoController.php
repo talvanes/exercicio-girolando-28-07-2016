@@ -35,7 +35,7 @@ class CarrinhoController extends Controller
     {
         try{
             $this->carrinhoService->add($product, $request->chartQty);
-            return redirect()->back()->with('success', 'Ítem adicionado ao carrinho!');
+            return redirect()->back()->with('success', 'Produto adicionado ao carrinho');
         } catch (CarrinhoException $ce) {
             return redirect()->back()->withErrors(['error' => $ce->getMessage()]);
         } catch (\Exception $e){
