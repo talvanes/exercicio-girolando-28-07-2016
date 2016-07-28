@@ -22,6 +22,7 @@ use Illuminate\Foundation\Bus\DispatchesJobs;
 use Illuminate\Session\Store;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Event;
 
 class CarrinhoService
 {
@@ -154,7 +155,7 @@ class CarrinhoService
     {
         if($this->guard->guest()) throw new UserNotLoggedException();
         $invoice = $this->invoiceService->create($this->getItems());
-        $this->eventDispatcher->fire(new InvoiceWasCreated($invoice));
+        Event::fire(new InvoiceWasCreated($invoice));
         $this->dispatch(new PaymentJob($invoice));
         $this->clear();
     }
